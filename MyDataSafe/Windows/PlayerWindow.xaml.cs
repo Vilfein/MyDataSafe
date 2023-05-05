@@ -33,6 +33,7 @@ namespace MyDataSafe.Windows
 
            if(File.Exists(filePath))
             {
+               
                 uri = new Uri(filePath);
                 ME.Source = uri;
             }
