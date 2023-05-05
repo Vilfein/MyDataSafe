@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyDataSafe.Database;
 using MyDataSafe.Model;
+using MyDataSafe.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,19 +15,15 @@ namespace MyDataSafe.ViewModel
     public class DataViewModel
     {
         private string foldername = "TempFiles";
-        private Context context { get; set; }
-        public DataViewModel()
-        {
-            context = new Context();
-           
-        }
-        public List<DataClass> LoadAllData() => context.Datas.ToList();
+        private DBService service { get; set; }
+        public DataViewModel(DBService service) => this.service = service;
+        
+        public List<DataClass> LoadAllData() => service.GetAllModels();
 
         public bool SaveData(string path)
         {
             try
             {
-
                 byte[] fileData = File.ReadAllBytes(path);
                 int indexName = path.LastIndexOf("\\");
                 int indexType = path.LastIndexOf('.');
@@ -38,8 +35,7 @@ namespace MyDataSafe.ViewModel
                     TypeFile = path.Substring(indexType+1)
                 };
 
-                context.Datas.Add(fileEntity);
-                context.SaveChanges();
+               service.SaveModel(fileEntity);
                 return true;
             }
             catch { return false; }
@@ -66,6 +62,15 @@ namespace MyDataSafe.ViewModel
                 bw.Close();
             }        
             return new FileInfo(pathtofile).FullName; ;
+        }
+
+        public delegate void Metoda();
+
+        public void RemoveFile(DataClass dataClass, Metoda M)
+        {
+            if (service.DeleteModel(dataClass))
+                MessageBox.Show("deleted");
+            M();
         }
     }
 }

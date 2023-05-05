@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyDataSafe.Windows;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,12 +9,19 @@ using System.Windows;
 
 namespace MyDataSafe
 {
-    
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            this.MainWindow = new LoginPage();
+            MainWindow.ShowDialog();
+        }
     }
+
+
 }

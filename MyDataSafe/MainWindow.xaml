@@ -14,9 +14,31 @@
         </Grid.ColumnDefinitions>
 
         <Button Content="Save new File" Height="43" Margin="148,0,146,248" Click="SaveTheFile" VerticalAlignment="Bottom" />
-        <Button Content="Open File" Height="42" Width="110" Margin="146,0,146,121" VerticalAlignment="Bottom" Click="Button_Click_1"/>
+        <Button Content="Open File" Height="42" Width="110" Margin="146,0,146,121" VerticalAlignment="Bottom"/>
 
-        <ListView x:Name="ListOfDatas" Grid.Column="1" Margin="45,45,42,50" Width="NaN" Height="NaN" MouseDoubleClick="OpenTheFile"/>
+        <ListView x:Name="ListOfDatas"
+                  Grid.Column="1"
+                  Margin="45,45,42,50"
+                  Width="NaN" 
+                  Height="NaN" 
+                  MouseDoubleClick="OpenTheFile">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding}"/>
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Remove File" Click="RemoveTheFile"/>
+                                    <MenuItem Header="Edit file" Click="EditTheFile"/>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            
+                        </StackPanel>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
 
 
 

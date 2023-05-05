@@ -29,7 +29,7 @@ namespace MyDataSafe
         private DataViewModel DVM { get; set; }
         public MainWindow()
         {
-            DVM = new DataViewModel();
+            DVM = new DataViewModel(new Service.DBService());
             InitializeComponent();
             ListOfDatas.ItemsSource = DVM.LoadAllData();
             this.Closing += (s, e) =>
@@ -52,16 +52,18 @@ namespace MyDataSafe
             ListOfDatas.ItemsSource = DVM.LoadAllData();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private async void OpenTheFile(object sender, MouseButtonEventArgs e)
         {
             DataClass? DC = (sender as ListView)?.SelectedItem as DataClass;   
             PlayerWindow PW = new PlayerWindow(await DVM.CreateFile(DC.Name));
             PW.Show();
         }
+
+        private void RemoveTheFile(object sender, EventArgs e) 
+        {
+            DataClass selected = ListOfDatas.SelectedItem as DataClass;
+            DVM.RemoveFile(selected,refresh);
+        }
+        private void EditTheFile(object sender, EventArgs e) { }
     }
 }
