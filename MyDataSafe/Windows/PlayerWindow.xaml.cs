@@ -33,6 +33,7 @@ namespace MyDataSafe.Windows
 
            if(File.Exists(filePath))
             {
+                MessageBox.Show("Soubor existuje");
                 uri = new Uri(filePath);
                 ME.Source = uri;
             }
