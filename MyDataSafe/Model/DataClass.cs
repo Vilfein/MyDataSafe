@@ -13,11 +13,11 @@ namespace MyDataSafe.Model
         public string TypeFile { get; set; }
         public byte[] Data { get; set; }
         public DateTime DateOfCreate { get; set; }
-        public DataColor dataColor { get; set; } = DataColor.White;
+        public DataColor dataColor { get; set; } = DataColor.Red;
 
         public override string ToString()
         {
-            return $"{Name}";
+            return Name;
         }
 
     }

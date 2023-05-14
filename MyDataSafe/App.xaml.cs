@@ -18,8 +18,8 @@ namespace MyDataSafe
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            this.MainWindow = new LoginPage();
-            MainWindow.ShowDialog();
+            //this.MainWindow = new LoginPage();
+            //MainWindow.ShowDialog();
         }
     }
 

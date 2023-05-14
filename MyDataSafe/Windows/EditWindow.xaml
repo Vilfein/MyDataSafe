@@ -1,0 +1,53 @@
+﻿<Window x:Class="MyDataSafe.Windows.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyDataSafe.Windows"
+        xmlns:model="clr-namespace:MyDataSafe.Model"
+        mc:Ignorable="d"
+        Background="Black"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="EditWindow" Height="220" Width="300">
+
+    <Window.DataContext>
+        <model:DataClass/>
+    </Window.DataContext>
+
+    <Grid>
+        <Label Content="Name:" Foreground="White" HorizontalAlignment="Left" Margin="34,46,0,0" VerticalAlignment="Top" Width="51"/>
+
+        <TextBox HorizontalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Margin="0,46,0,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding Name}"
+                 VerticalAlignment="Top"
+                 Width="120" Height="26"
+
+                 x:Name="NameTB"
+                 />
+
+        <Label Content="Color:" Foreground="White" HorizontalAlignment="Left" Margin="34,97,0,0" VerticalAlignment="Top" Width="51"/>
+
+        <ComboBox x:Name="CB"
+            Height="20" 
+                  Margin="0,100,0,0"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center" 
+                  Width="120"
+                  SelectedItem="{Binding dataColor}"/>
+
+
+        <TextBox HorizontalAlignment="Left"
+            VerticalContentAlignment="Center"
+            Margin="215,46,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding TypeFile}"
+                 IsReadOnly="True"
+            VerticalAlignment="Top"
+            Width="50" Height="26"/>
+        <Button x:Name="SaveBtn" Content="Uložit změny" IsEnabled="False" HorizontalAlignment="Center" Margin="0,139,0,0" Width="120" Height="20" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

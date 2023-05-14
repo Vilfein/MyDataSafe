@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MyDataSafe.ViewModel.DataViewModel;
 
 namespace MyDataSafe
 {
@@ -61,9 +62,16 @@ namespace MyDataSafe
 
         private void RemoveTheFile(object sender, EventArgs e) 
         {
-            DataClass selected = ListOfDatas.SelectedItem as DataClass;
-            DVM.RemoveFile(selected,refresh);
+            DataClass? selected = ListOfDatas.SelectedItem as DataClass;
+            DVM.RemoveFile(selected!,refresh);
         }
-        private void EditTheFile(object sender, EventArgs e) { }
+        private void EditTheFile(object sender, EventArgs e)
+        {
+            DataClass selected = ListOfDatas.SelectedItem as DataClass;
+            EditWindow EW = new EditWindow(selected, DVM);
+            EW.Closed += (s, e) => refresh();
+            EW.Show();
+
+        }
     }
 }
