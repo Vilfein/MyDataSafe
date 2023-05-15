@@ -36,10 +36,7 @@ namespace MyDataSafe.Windows
                 uri = new Uri(filePath);
                 ME.Source = uri;
             }
-             
-
-           // MessageBox.Show("Zvolený soubor: " + ME.Source);
-
+            #region events
 
             foreach (UIElement item in (Content as Grid).Children)
             {
@@ -63,6 +60,7 @@ namespace MyDataSafe.Windows
             {
                 DT.Stop();
                 ME.Stop();
+                Durat.Value = 0d;
             };
             DT.Interval = TimeSpan.FromMilliseconds(1);
             DT.Tick += (s, e) =>
@@ -73,8 +71,11 @@ namespace MyDataSafe.Windows
             VolSlider.ValueChanged += (s, e) =>
             {
                 ME.Volume = e.NewValue;
-            };
+            }; 
+            #endregion
 
+            DT.Start();
+            ME.Play();
         }
 
         private void OnOpened(object sender, EventArgs e)
