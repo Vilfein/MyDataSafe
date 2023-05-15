@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Shapes;
-using System.Xml.Serialization;
 
 namespace MyDataSafe.ViewModel
 {

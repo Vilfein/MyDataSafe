@@ -12,13 +12,12 @@ namespace MyDataSafe.Windows
         public LoginPage()
         {
             LVM = new LoginViewModel();            
-            InitializeComponent();
-           
+            InitializeComponent();           
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            LVM.LoadSetting();
+            await LVM.LoadSetting();
             var name = LoginName.Text;
             var pass = LoginPass.Password;
 
@@ -35,6 +34,5 @@ namespace MyDataSafe.Windows
                 LoginPass.Password = string.Empty;
             }
         }
-
     }
 }
