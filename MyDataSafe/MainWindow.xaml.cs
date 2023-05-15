@@ -3,6 +3,8 @@ using MyDataSafe.Model;
 using MyDataSafe.ViewModel;
 using MyDataSafe.Windows;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -64,7 +66,12 @@ namespace MyDataSafe
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            ListOfDatas.ItemsSource = await DVM.LoadAllDataAsync();
+           var data = await DVM.LoadAllDataAsync();
+            ListOfDatas.ItemsSource = data;
+
+
+
+
         }
     }
 }
