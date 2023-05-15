@@ -71,7 +71,8 @@ namespace MyDataSafe
             DataClass selected = ListOfDatas.SelectedItem as DataClass;
             await DVM.CreateFile(selected.Name);
             string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
-            MessageBox.Show(fw);
+            string csta = Path.GetDirectoryName(fw);
+            MessageBox.Show(csta);
             Process.Start("explorer.exe", fw);
         }
 
