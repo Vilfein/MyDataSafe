@@ -30,6 +30,8 @@
                                 <ContextMenu>
                                     <MenuItem Header="Remove File" Click="RemoveTheFile"/>
                                     <MenuItem Header="Edit file" Click="EditTheFile"/>
+                                    <MenuItem Header="Show in Explorer" Click="Explorer"/>
+                                    <MenuItem Header="Open in system player" Click="Explorer"/>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
 

@@ -4,6 +4,8 @@ using MyDataSafe.ViewModel;
 using MyDataSafe.Windows;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,6 +64,15 @@ namespace MyDataSafe
             EW.Closed += (s, e) => refresh();
             EW.Show();
 
+        }
+
+        private async void Explorer(object sender, EventArgs e)
+        {
+            DataClass selected = ListOfDatas.SelectedItem as DataClass;
+            await DVM.CreateFile(selected.Name);
+            string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
+            MessageBox.Show(fw);
+            Process.Start("explorer.exe", fw);
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
