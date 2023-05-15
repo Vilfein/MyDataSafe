@@ -33,7 +33,13 @@ namespace MyDataSafe
 
         private void SaveTheFile(object sender, RoutedEventArgs e)
         {
+            string pattern = "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
+                "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;"+
+                "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx";
+
             OpenFileDialog OF = new OpenFileDialog();
+            OF.Title = "Vybrat Soubor";
+            OF.Filter = pattern;
             OF.ShowDialog();
             DVM.SaveData(OF.FileName);
             refresh();
@@ -79,10 +85,15 @@ namespace MyDataSafe
         {
            var data = await DVM.LoadAllDataAsync();
             ListOfDatas.ItemsSource = data;
+        }
 
-
-
-
+        private async void OpenInSystemPlayer(object sender, RoutedEventArgs e)
+        {
+            DataClass selected = ListOfDatas.SelectedItem as DataClass;
+            await DVM.CreateFile(selected.Name);
+            string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
+            fw = @fw.Insert(fw.LastIndexOf('\\') + 1, "TempFiles\\");
+            Process.Start("explorer.exe", @fw);
         }
     }
 }

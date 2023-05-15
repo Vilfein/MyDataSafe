@@ -28,7 +28,7 @@ namespace MyDataSafe.ViewModel
                 int indexType = path.LastIndexOf('.');
                 string nameOfFile = path.Substring(indexName + 1);
 
-                string TheName = nameOfFile.Substring(0,nameOfFile.LastIndexOf("."));
+                string TheName = nameOfFile.Substring(0, nameOfFile.LastIndexOf("."));
 
 
                 var fileEntity = new DataClass
@@ -57,12 +57,14 @@ namespace MyDataSafe.ViewModel
 
             var fileEntity = LoadAllData().FirstOrDefault(f => f.Name == name);
             var pathtofile = Path.Combine(foldername, $"{fileEntity!.Name}.{fileEntity.TypeFile}");
-
-            using (BinaryWriter bw = new BinaryWriter(new FileStream(pathtofile, FileMode.Create)))
+            if (!File.Exists(pathtofile))
             {
-                bw.Write(fileEntity.Data);
-                bw.Flush();
-                bw.Close();
+                using (BinaryWriter bw = new BinaryWriter(new FileStream(pathtofile, FileMode.Create)))
+                {
+                    bw.Write(fileEntity.Data);
+                    bw.Flush();
+                    bw.Close();
+                }
             }
             return new FileInfo(pathtofile).FullName; ;
         }
@@ -74,7 +76,7 @@ namespace MyDataSafe.ViewModel
         }
         public async Task UpdateFileAsync(DataClass dataClass)
         {
-           await service.UpdateModelAsync(dataClass);
+            await service.UpdateModelAsync(dataClass);
         }
 
         public async Task UpdateFileAsync(DataClass dataClass, PMethod M)

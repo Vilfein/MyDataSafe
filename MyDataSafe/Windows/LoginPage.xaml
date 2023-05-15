@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyDataSafe.Windows"
         ResizeMode="NoResize"
-        Background="Black"
+                Style="{StaticResource Bck}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="LoginPage" Height="165" Width="220">
+        Title="LoginPage" Height="165" Width="220" Icon="/Icons/safe-box.png">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
         <Label Content="Name:" Foreground="White"></Label>
         <TextBox x:Name="LoginName"/>

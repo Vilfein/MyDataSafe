@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:MyDataSafe.Windows"
         xmlns:model="clr-namespace:MyDataSafe.Model"
         mc:Ignorable="d"
-        Background="Black"
+                Style="{StaticResource Bck}"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="EditWindow" Height="220" Width="300">
+        Title="EditWindow" Height="220" Width="300" Icon="/Icons/safe-box.png">
 
     <Window.DataContext>
         <model:DataClass/>

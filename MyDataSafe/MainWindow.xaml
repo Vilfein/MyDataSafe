@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyDataSafe"
         mc:Ignorable="d"
-        Background="Black"
-        Title="MainWindow" Height="450" Width="800">
+       WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Style="{StaticResource Bck}"
+        Title="MainWindow" Height="450" Width="800" Icon="/Icons/safe-box.png">
+    <Window.Resources>
+        <Image x:Key="Delete" Source="pack://application:,,,/Icons/delete.png"/>
+        <Image x:Key="Edit" Source="pack://application:,,,/Icons/pencil.png"/>
+        <Image x:Key="ShowEx" Source="pack://application:,,,/Icons/folder.png"/>
+        <Image x:Key="PlayEx" Source="pack://application:,,,/Icons/wmp.png"/>
+        <Image x:Key="Saf" Source="pack://application:,,,/Icons/safe.png"/>
+    </Window.Resources>
+    
     <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="201*"/>
@@ -28,10 +38,10 @@
                             <TextBlock Text="{Binding Name}" Foreground="{Binding Color.Val}"/>
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Remove File" Click="RemoveTheFile"/>
-                                    <MenuItem Header="Edit file" Click="EditTheFile"/>
-                                    <MenuItem Header="Show in Explorer" Click="Explorer"/>
-                                    <MenuItem Header="Open in system player" Click="Explorer"/>
+                                    <MenuItem Header="Remove File" Click="RemoveTheFile" Icon="{StaticResource Delete}"/>
+                                    <MenuItem Header="Edit file" Click="EditTheFile" Icon="{StaticResource Edit}"/>
+                                    <MenuItem Header="Show in Explorer" Click="Explorer" Icon="{StaticResource ShowEx}"/>
+                                    <MenuItem Header="Open in system player" Click="OpenInSystemPlayer" Icon="{StaticResource PlayEx}"/>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
 

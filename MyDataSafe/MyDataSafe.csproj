@@ -8,7 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\delete.png" />
+    <None Remove="Icons\folder.png" />
+    <None Remove="Icons\pencil.png" />
+    <None Remove="Icons\safe-box.png" />
+    <None Remove="Icons\safe.png" />
+    <None Remove="Icons\wmp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MIcrosoft.EntityFrameworkCore.SQlite" Version="7.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\delete.png" />
+    <Resource Include="Icons\folder.png" />
+    <Resource Include="Icons\pencil.png" />
+    <Resource Include="Icons\safe-box.png" />
+    <Resource Include="Icons\safe.png" />
+    <Resource Include="Icons\wmp.png" />
   </ItemGroup>
 
 </Project>

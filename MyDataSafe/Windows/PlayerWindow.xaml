@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyDataSafe.Windows"
         mc:Ignorable="d"
-        Background="Black"
+        Style="{StaticResource Bck}"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         KeyDown="TimeJump"
-        Title="PlayerWindow" Height="550" Width="800">
+        Title="PlayerWindow" Height="550" Width="800" Icon="/Icons/safe-box.png">
     <Grid>
         <MediaElement x:Name="ME" ScrubbingEnabled="True" LoadedBehavior="Manual" MediaOpened="OnOpened" MediaEnded="MediaStop" HorizontalAlignment="Left" Height="348" Margin="101,30,0,0" VerticalAlignment="Top" Width="546"/>
         
