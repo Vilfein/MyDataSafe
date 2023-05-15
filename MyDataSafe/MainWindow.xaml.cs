@@ -71,9 +71,8 @@ namespace MyDataSafe
             DataClass selected = ListOfDatas.SelectedItem as DataClass;
             await DVM.CreateFile(selected.Name);
             string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
-            string csta = Path.GetDirectoryName(fw);
-            MessageBox.Show(csta);
-            Process.Start("explorer.exe", fw);
+            string path = Path.GetDirectoryName(fw) + "\\TempFiles";
+            Process.Start("explorer.exe", @path);
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
