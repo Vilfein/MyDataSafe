@@ -33,11 +33,12 @@
 
         <ComboBox x:Name="CB"
             Height="20" 
+                  SelectedItem="{Binding Color}"
                   Margin="0,100,0,0"
                   VerticalAlignment="Top"
                   HorizontalAlignment="Center" 
                   Width="120"
-                  SelectedItem="{Binding dataColor}"/>
+                 />
 
 
         <TextBox HorizontalAlignment="Left"

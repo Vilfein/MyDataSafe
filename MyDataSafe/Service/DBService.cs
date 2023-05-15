@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyDataSafe.Database;
 using MyDataSafe.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyDataSafe.Service
@@ -26,7 +24,6 @@ namespace MyDataSafe.Service
             context.Datas.Add(DC);
             context.SaveChanges();
         }
-
         public async Task SaveModelAsync(DataClass DC)
         {
             await context.Datas.AddAsync(DC);
@@ -37,15 +34,15 @@ namespace MyDataSafe.Service
         /// Returns all stored files
         /// </summary>
         /// <returns>All stored files</returns>
-        public List<DataClass> GetAllModels() => context.Datas.ToList();
+        public List<DataClass> GetAllModels() => context.Datas.Include(x => x.Color).ToList();
 
         /// <summary>
         /// Returns all stored files asynchonously
         /// </summary>
         /// <returns>All stored files</returns>
-        public async Task<List<DataClass>> GetAllModelsAsync() => await context.Datas.ToListAsync();
+        public async Task<List<DataClass>> GetAllModelsAsync() => await context.Datas.Include(x => x.Color).ToListAsync();
 
-        public DataClass GetModel(string name) => context.Datas.FirstOrDefault(x => x.Name == name) ?? null;
+        public DataClass GetModel(string name) => context.Datas.Include(x => x.Color).FirstOrDefault(x => x.Name == name) ?? null;
 
         public async Task<DataClass> GetModelAsync(string name) => await context.Datas.FirstOrDefaultAsync(x => x.Name == name) ?? null;
 
@@ -70,5 +67,7 @@ namespace MyDataSafe.Service
             }
             catch { return false; }
         }
+
+        public List<DataColor> GetColors() => context.Colors.ToList();
     }
 }

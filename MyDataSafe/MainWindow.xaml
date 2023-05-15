@@ -26,7 +26,7 @@
                 <DataTemplate>
                     <WrapPanel>
                         <StackPanel>
-                            <TextBlock Text="{Binding}"/>
+                            <TextBlock Text="{Binding Name}" Foreground="{Binding Color.Val}"/>
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Remove File" Click="RemoveTheFile"/>

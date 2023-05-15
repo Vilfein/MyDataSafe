@@ -1,19 +1,7 @@
 ﻿using MyDataSafe.Model;
-using MyDataSafe.Service;
 using MyDataSafe.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyDataSafe.Windows
 {
@@ -29,8 +17,10 @@ namespace MyDataSafe.Windows
             this.data = data;
             this.DVM= DVM;
             InitializeComponent();
-            CB.ItemsSource = Enum.GetValues(typeof(DataColor)).Cast<DataColor>();
+            CB.ItemsSource = DVM.LoadColors();
             DataContext = data;
+            int id = data.DataColorId - 1;
+
             NameTB.TextChanged += EnableButton;
             CB.SelectionChanged += EnableButton;
             SaveBtn.Click += EditData;
@@ -47,7 +37,7 @@ namespace MyDataSafe.Windows
             else
             {
                 data.Name = NameTB.Text;
-                data.dataColor = (DataColor)CB.SelectedItem;
+                data.Color = (DataColor)CB.SelectedItem;
                 DVM.UpdateFile(data);
                 Close();
             }           
