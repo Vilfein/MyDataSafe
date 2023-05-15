@@ -3,21 +3,9 @@ using MyDataSafe.Model;
 using MyDataSafe.ViewModel;
 using MyDataSafe.Windows;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static MyDataSafe.ViewModel.DataViewModel;
 
 namespace MyDataSafe
 {
@@ -32,7 +20,7 @@ namespace MyDataSafe
         {
             DVM = new DataViewModel(new Service.DBService());
             InitializeComponent();
-            ListOfDatas.ItemsSource = DVM.LoadAllData();
+           
             this.Closing += (s, e) =>
             {
                 DVM.CleanUp();
@@ -72,6 +60,11 @@ namespace MyDataSafe
             EW.Closed += (s, e) => refresh();
             EW.Show();
 
+        }
+
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            ListOfDatas.ItemsSource = await DVM.LoadAllDataAsync();
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Background="Black"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="201*"/>
             <ColumnDefinition Width="199*"/>
@@ -18,14 +18,13 @@
 
         <ListView x:Name="ListOfDatas"
                   Grid.Column="1"
-                  Margin="45,45,42,50"
-                  Width="NaN" 
-                  Height="NaN" 
+                  Margin="50,41,48,69"
+                  Width="300" 
                   MouseDoubleClick="OpenTheFile">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <StackPanel>
+                        <StackPanel Width="280" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Name}" Foreground="{Binding Color.Val}"/>
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
@@ -33,12 +32,12 @@
                                     <MenuItem Header="Edit file" Click="EditTheFile"/>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
-                            
+
                         </StackPanel>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            </ListView>
+        </ListView>
 
 
 
