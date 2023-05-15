@@ -31,16 +31,15 @@ namespace MyDataSafe.Windows
             InitializeComponent();
             CB.ItemsSource = Enum.GetValues(typeof(DataColor)).Cast<DataColor>();
             DataContext = data;
-            NameTB.TextChanged += NameChanged;
+            NameTB.TextChanged += EnableButton;
+            CB.SelectionChanged += EnableButton;
             SaveBtn.Click += EditData;
-
         }
 
-        private void NameChanged(object sender, TextChangedEventArgs e)
+        private void EnableButton(object sender, EventArgs e)
         {
             SaveBtn.IsEnabled= true;
         }
-
 
         private void EditData(object sender, EventArgs e)
         {
@@ -51,10 +50,7 @@ namespace MyDataSafe.Windows
                 data.dataColor = (DataColor)CB.SelectedItem;
                 DVM.UpdateFile(data);
                 Close();
-            }
-           
+            }           
         }
-
-
     }
 }
