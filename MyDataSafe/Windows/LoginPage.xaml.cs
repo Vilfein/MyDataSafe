@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyDataSafe.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MyDataSafe.Windows
 {
@@ -19,23 +8,33 @@ namespace MyDataSafe.Windows
     /// </summary>
     public partial class LoginPage : Window
     {
+        LoginViewModel LVM;
         public LoginPage()
         {
+            LVM = new LoginViewModel();            
             InitializeComponent();
+           
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if ((LoginName.Text == "Vašek") && (LoginPass.Password == "Ahoj123!"))
+            LVM.LoadSetting();
+            var name = LoginName.Text;
+            var pass = LoginPass.Password;
+
+            if (( name == LVM.LoginName) && (pass == LVM.LoginPassword))
             {
                 MainWindow MW = new MainWindow();
+                MW.Show();
                 this.Close();
             }
+
             else
             {
                 MessageBox.Show("Wrong login!","Error",MessageBoxButton.OK, MessageBoxImage.Error);
                 LoginPass.Password = string.Empty;
             }
         }
+
     }
 }
