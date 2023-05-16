@@ -8,7 +8,7 @@
        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Style="{StaticResource Bck}"
-        Title="MainWindow" Height="450" Width="800" Icon="/Icons/safe-box.png">
+        Title="MainWindow" Height="460" Width="500" Icon="/Icons/safe-box.png">
     <Window.Resources>
         <Image x:Key="Delete" Source="pack://application:,,,/Icons/delete.png"/>
         <Image x:Key="Edit" Source="pack://application:,,,/Icons/pencil.png"/>
@@ -16,21 +16,16 @@
         <Image x:Key="PlayEx" Source="pack://application:,,,/Icons/wmp.png"/>
         <Image x:Key="Saf" Source="pack://application:,,,/Icons/safe.png"/>
     </Window.Resources>
-    
-    <Grid Loaded="Grid_Loaded">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="201*"/>
-            <ColumnDefinition Width="199*"/>
-        </Grid.ColumnDefinitions>
 
-        <Button Content="Save new File" Height="43" Margin="148,0,146,248" Click="SaveTheFile" VerticalAlignment="Bottom" />
-        <Button Content="Open File" Height="42" Width="110" Margin="146,0,146,121" VerticalAlignment="Bottom"/>
+    <Grid Loaded="Grid_Loaded" Height="434" VerticalAlignment="Top">
+
+
+        <Button Content="Save new File" Margin="155,367,0,0" Click="SaveTheFile" HorizontalAlignment="Left" Width="190" Height="43" VerticalAlignment="Top" />
 
         <ListView x:Name="ListOfDatas"
-                  Grid.Column="1"
-                  Margin="50,41,48,69"
+                  Margin="0,27,0,83"
                   Width="300" 
-                  MouseDoubleClick="OpenTheFile">
+                  MouseDoubleClick="OpenTheFile" HorizontalAlignment="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>

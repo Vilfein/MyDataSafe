@@ -35,7 +35,8 @@ namespace MyDataSafe
         {
             string pattern = "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
                 "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;"+
-                "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx";
+                "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx"+
+                "| Archives (*.zip;*.rar)|*.zip;*.rar";
 
             OpenFileDialog OF = new OpenFileDialog();
             OF.Title = "Vybrat Soubor";
