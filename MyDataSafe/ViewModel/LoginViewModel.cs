@@ -16,8 +16,8 @@ namespace MyDataSafe.ViewModel
                 File.Create(path).Close();
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                    sw.WriteLine("Vašek");
-                    sw.WriteLine("Ahoj123x");
+                    sw.WriteLine("Admin");
+                    sw.WriteLine("Admin123!");
                     sw.Flush();
                     sw.Close();
                 }
