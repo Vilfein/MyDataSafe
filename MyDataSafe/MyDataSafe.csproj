@@ -7,6 +7,7 @@
     <UseWPF>true</UseWPF>
     <SignAssembly>True</SignAssembly>
     <DelaySign>False</DelaySign>
+    <Platforms>AnyCPU;x86;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

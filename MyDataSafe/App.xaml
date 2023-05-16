@@ -15,7 +15,29 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-        </Style>      
-        
+        </Style>
+
+
+        <DropShadowEffect x:Key="ShadowEffect">
+            <DropShadowEffect.ShadowDepth>2</DropShadowEffect.ShadowDepth>
+        </DropShadowEffect>
+        <Style x:Key="BTNS" TargetType="{x:Type Button}">
+            <Setter Property="Effect" Value="{StaticResource ShadowEffect}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#00B3FF"/>
+            <Setter Property="BorderBrush" Value="#FF03299E"/>
+            <Setter Property="FontSize" Value="12"/>
+
+            <Style.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="DemiBold"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
     </Application.Resources>
 </Application>

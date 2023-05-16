@@ -20,7 +20,7 @@
     <Grid Loaded="Grid_Loaded" Height="434" VerticalAlignment="Top">
 
 
-        <Button Content="Save new File" Margin="155,367,0,0" Click="SaveTheFile" HorizontalAlignment="Left" Width="190" Height="43" VerticalAlignment="Top" />
+        <Button Style="{StaticResource BTNS}" Content="Save new File" Margin="155,367,0,0" Click="SaveTheFile" HorizontalAlignment="Left" Width="190" Height="43" VerticalAlignment="Top" />
 
         <ListView x:Name="ListOfDatas"
                   Margin="0,27,0,83"

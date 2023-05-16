@@ -37,7 +37,8 @@ namespace MyDataSafe
             string pattern = "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
                 "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;" +
                 "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx" +
-                "| Archives (*.zip;*.rar)|*.zip;*.rar";
+                "| Archives (*.zip;*.rar)|*.zip;*.rar"+
+                "| Music (*.mp3;*.wav;*.wma)|*.mp3;*.wav;*.wma";
 
             OpenFileDialog OF = new OpenFileDialog();
             OF.Title = "Vybrat Soubor";
@@ -95,10 +96,6 @@ namespace MyDataSafe
                 CloseLoading();
                 Process.Start("explorer.exe", @path);
             });
-
-
-
-
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)

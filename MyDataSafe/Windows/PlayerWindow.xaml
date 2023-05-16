@@ -17,9 +17,9 @@
 
         </Slider>
         <ProgressBar x:Name="Durat" ValueChanged="Durat_ValueChanged" HorizontalAlignment="Left" Foreground="Red" Height="2" Margin="101,399,0,0" VerticalAlignment="Top"  Width="{Binding Path=Width, ElementName=ME}" />
-        <Button x:Name="PlayBtn" Content="Play" HorizontalAlignment="Left" Margin="290,430,0,0" VerticalAlignment="Top" Width="48" Height="37"/>
-        <Button x:Name="PauseBtn" Content="Pause" HorizontalAlignment="Left" Margin="364,430,0,0" VerticalAlignment="Top" Width="{Binding Path=Width, ElementName=PlayBtn}" Height="37"/>
-        <Button x:Name="StopBtn" Content="Stop" HorizontalAlignment="Left" Margin="440,430,0,0" VerticalAlignment="Top" Width="48" Height="37"/>
+        <Button x:Name="PlayBtn" Style="{StaticResource BTNS}"  Content="Play" HorizontalAlignment="Left" Margin="290,430,0,0" VerticalAlignment="Top" Width="48" Height="37"/>
+        <Button x:Name="PauseBtn" Style="{StaticResource BTNS}"  Content="Pause" HorizontalAlignment="Left" Margin="364,430,0,0" VerticalAlignment="Top" Width="{Binding Path=Width, ElementName=PlayBtn}" Height="37"/>
+        <Button x:Name="StopBtn" Style="{StaticResource BTNS}"  Content="Stop" HorizontalAlignment="Left" Margin="440,430,0,0" VerticalAlignment="Top" Width="48" Height="37"/>
         <Label  x:Name="TtE" Content="00:00:00" Foreground="White" HorizontalAlignment="Left" Margin="101,412,0,0" VerticalAlignment="Top"/>
 
     </Grid>

@@ -49,6 +49,6 @@
                  IsReadOnly="True"
             VerticalAlignment="Top"
             Width="50" Height="26"/>
-        <Button x:Name="SaveBtn" Content="Uložit změny" IsEnabled="False" HorizontalAlignment="Center" Margin="0,139,0,0" Width="120" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="SaveBtn" Style="{StaticResource BTNS}"  Content="Uložit změny" IsEnabled="False" HorizontalAlignment="Center" Margin="0,139,0,0" Width="120" Height="20" VerticalAlignment="Top"/>
     </Grid>
 </Window>
