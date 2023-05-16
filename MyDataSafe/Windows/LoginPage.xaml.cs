@@ -11,15 +11,16 @@ namespace MyDataSafe.Windows
     public partial class LoginPage : Window
     {
         LoginViewModel LVM;
+        Loading ld;
         public LoginPage()
         {
+            ld = new Loading();
             LVM = new LoginViewModel();
             InitializeComponent();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var ld = new Loading();
             ld.Show();
             LVM.LoadSetting().GetAwaiter().OnCompleted(() =>
             {
@@ -28,10 +29,12 @@ namespace MyDataSafe.Windows
 
                 if ((name == LVM.LoginName) && (pass == LVM.LoginPassword))
                 {
-                    this.Closed += (s, e) => ld.Close();
                     MainWindow MW = new MainWindow();
                     MW.Show();
+                    ld.Close();
+
                     this.Close();
+
                 }
 
                 else

@@ -38,7 +38,8 @@ namespace MyDataSafe
                 "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;" +
                 "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx" +
                 "| Archives (*.zip;*.rar)|*.zip;*.rar"+
-                "| Music (*.mp3;*.wav;*.wma)|*.mp3;*.wav;*.wma";
+                "| Music (*.mp3;*.wav;*.wma)|*.mp3;*.wav;*.wma"+
+                "| All files (*.*)|*.*";
 
             OpenFileDialog OF = new OpenFileDialog();
             OF.Title = "Vybrat Soubor";
