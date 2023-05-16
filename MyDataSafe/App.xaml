@@ -6,7 +6,6 @@
     <Application.Resources>
         <!--Windows/LoginPage.xaml-->
         <!--MainWindow.xaml-->
-
         <Style x:Key="Bck" TargetType="Window">
             <Setter Property="Background">
                 <Setter.Value>
