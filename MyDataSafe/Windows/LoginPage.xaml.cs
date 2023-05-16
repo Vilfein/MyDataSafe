@@ -17,6 +17,7 @@ namespace MyDataSafe.Windows
             ld = new Loading();
             LVM = new LoginViewModel();
             InitializeComponent();
+
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +35,6 @@ namespace MyDataSafe.Windows
                     ld.Close();
 
                     this.Close();
-
                 }
 
                 else
