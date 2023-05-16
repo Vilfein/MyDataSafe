@@ -13,28 +13,34 @@ namespace MyDataSafe.Windows
         LoginViewModel LVM;
         public LoginPage()
         {
-            LVM = new LoginViewModel();            
-            InitializeComponent();           
+            LVM = new LoginViewModel();
+            InitializeComponent();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await LVM.LoadSetting();
-            var name = LoginName.Text;
-            var pass = LoginPass.Password;
-
-            if (( name == LVM.LoginName) && (pass == LVM.LoginPassword))
+            var ld = new Loading();
+            ld.Show();
+            LVM.LoadSetting().GetAwaiter().OnCompleted(() =>
             {
-                MainWindow MW = new MainWindow();
-                MW.Show();
-                this.Close();
-            }
+                var name = LoginName.Text;
+                var pass = LoginPass.Password;
 
-            else
-            {
-                MessageBox.Show("Wrong login!","Error",MessageBoxButton.OK, MessageBoxImage.Error);
-                LoginPass.Password = string.Empty;
-            }
+                if ((name == LVM.LoginName) && (pass == LVM.LoginPassword))
+                {
+                    this.Closed += (s, e) => ld.Close();
+                    MainWindow MW = new MainWindow();
+                    MW.Show();
+                    this.Close();
+                }
+
+                else
+                {
+                    ld.Close();
+                    MessageBox.Show("Wrong login!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    LoginPass.Password = string.Empty;
+                }
+            });
         }
     }
 }

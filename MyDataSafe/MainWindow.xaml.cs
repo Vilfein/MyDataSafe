@@ -80,9 +80,11 @@ namespace MyDataSafe
             ld = new Loading();
             ld.Show();
         }
-
-
-        private async void CloseLoading() => ld.Close();
+        private async void CloseLoading()
+        {
+            ld.Close();
+            ld = null;
+        }
 
         private async void Explorer(object sender, EventArgs e)
         {
@@ -92,9 +94,9 @@ namespace MyDataSafe
             {
                 string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
                 string path = Path.GetDirectoryName(fw) + "\\TempFiles";
-                await Task.Delay(100);
+                await Task.Delay(10);
+              Process.Start("explorer.exe", @path); 
                 CloseLoading();
-                Process.Start("explorer.exe", @path);
             });
         }
 
@@ -106,11 +108,15 @@ namespace MyDataSafe
 
         private async void OpenInSystemPlayer(object sender, RoutedEventArgs e)
         {
+            ShowLoading();
             DataClass selected = ListOfDatas.SelectedItem as DataClass;
-            await DVM.CreateFile(selected.Name);
-            string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
-            fw = @fw.Insert(fw.LastIndexOf('\\') + 1, "TempFiles\\");
-            Process.Start("explorer.exe", @fw);
+            DVM.CreateFile(selected.Name).GetAwaiter().OnCompleted(async () =>
+            {
+                string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
+                fw = @fw.Insert(fw.LastIndexOf('\\') + 1, "TempFiles\\");
+                CloseLoading();
+                Process.Start("explorer.exe", @fw);
+            });
         }
     }
 }
