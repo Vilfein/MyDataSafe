@@ -8,7 +8,7 @@
        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Style="{StaticResource Bck}"
-        Title="MyDataSafe" Height="460" Width="500" Icon="/Icons/safe-box.png">
+        Title="Data Safe" Height="470" Width="500" Icon="/Icons/safe-box.png">
     <Window.Resources>
         <Image x:Key="Delete" Source="pack://application:,,,/Icons/delete.png"/>
         <Image x:Key="Edit" Source="pack://application:,,,/Icons/pencil.png"/>
@@ -18,19 +18,19 @@
     </Window.Resources>
 
     <Grid Loaded="Grid_Loaded" Height="443" VerticalAlignment="Top">
-
-
-        <Button Style="{StaticResource BTNS}" Content="Save new File" Margin="155,367,0,0" Click="SaveTheFile" HorizontalAlignment="Left" Width="190" Height="43" VerticalAlignment="Top" />
-
+        <Button Style="{StaticResource BTNS}" Content="Save new File" Margin="155,367,155,0" Click="SaveTheFile" Height="43" VerticalAlignment="Top" />
         <ListView x:Name="ListOfDatas"
-                  Margin="0,27,0,83"
-                  Width="300" 
-                 
+                  Margin="0,19,0,91"
+                  Width="414" 
+                  MouseDoubleClick="OpenInSystemPlayer"
+                  KeyDown="ListOfDatas_KeyDown"
+                  BorderThickness="1"
+                  BorderBrush="White"
                   HorizontalAlignment="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                        <StackPanel Width="280" HorizontalAlignment="Center">
+                        <StackPanel Width="390" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Name}" Foreground="{Binding Color.Val}"/>
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
@@ -40,16 +40,14 @@
                                     <MenuItem Header="Open in system player" Click="OpenInSystemPlayer" Icon="{StaticResource PlayEx}"/>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
-
                         </StackPanel>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Label x:Name="WebSite"
-               
             HorizontalAlignment="Left"
-                   Margin="7,361,0,56" 
+                   Margin="-5,373,0,44" 
                    Foreground="White" 
                    Content="www.vasekdoskar.cz" 
                    RenderTransformOrigin="0.5,0.5">
@@ -57,7 +55,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="33.15"/>
+                    <RotateTransform Angle="41.08"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Label.RenderTransform>

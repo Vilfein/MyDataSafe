@@ -130,5 +130,13 @@ namespace MyDataSafe
                 Process.Start("explorer.exe", @fw);
             });
         }
+
+        private void ListOfDatas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete)
+            {
+                RemoveTheFile(sender, EventArgs.Empty);
+            }
+        }
     }
 }

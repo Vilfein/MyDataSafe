@@ -17,7 +17,6 @@
             </Setter>
         </Style>
 
-
         <DropShadowEffect x:Key="ShadowEffect">
             <DropShadowEffect.ShadowDepth>2</DropShadowEffect.ShadowDepth>
         </DropShadowEffect>
@@ -36,8 +35,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
-
 
     </Application.Resources>
 </Application>

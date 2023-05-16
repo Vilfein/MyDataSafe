@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyDataSafe.Windows"
         ResizeMode="NoResize"
-                Style="{StaticResource Bck}"
+        Style="{StaticResource Bck}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="LoginPage" Height="165" Width="220" Icon="/Icons/safe-box.png">
+        Title="Data Safe" Height="210" Width="220" Icon="/Icons/safe-box.png">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <Label Content="Log In" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" />
         <Label Content="Name:" Foreground="White"></Label>
         <TextBox x:Name="LoginName"/>
         <Label Content="Password:" Foreground="White"></Label>
         <PasswordBox x:Name="LoginPass" Width="130" />
-        <Button x:Name="LoginBtn" Style="{StaticResource BTNS}"  Content="Log In" Click="Button_Click" Margin="0,10" IsDefault="True"/>
+        <Button x:Name="LoginBtn" Style="{StaticResource BTNS}" Margin="0,15"  Content="Open" Click="Button_Click" IsDefault="True"/>
 
     </StackPanel>
 </Window>
