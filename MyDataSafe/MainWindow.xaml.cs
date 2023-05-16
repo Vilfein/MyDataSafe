@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,11 +35,12 @@ namespace MyDataSafe
 
         private void SaveTheFile(object sender, RoutedEventArgs e)
         {
-            string pattern = "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
+            string pattern =
+                "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
                 "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;" +
                 "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx" +
-                "| Archives (*.zip;*.rar)|*.zip;*.rar"+
-                "| Music (*.mp3;*.wav;*.wma)|*.mp3;*.wav;*.wma"+
+                "| Archives (*.zip;*.rar)|*.zip;*.rar" +
+                "| Music (*.mp3;*.wav;*.wma)|*.mp3;*.wav;*.wma" +
                 "| All files (*.*)|*.*";
 
             OpenFileDialog OF = new OpenFileDialog();
@@ -57,9 +59,15 @@ namespace MyDataSafe
 
         private async void OpenTheFile(object sender, MouseButtonEventArgs e)
         {
+            string[] types = { "wmv", "avi", "mp4", "mpeg", "flv", "mp3", "wav", "wma" };
             DataClass? DC = (sender as ListView)?.SelectedItem as DataClass;
-            PlayerWindow PW = new PlayerWindow(await DVM.CreateFile(DC.Name));
-            PW.Show();
+
+
+            if (types.Any(x =>x == DC?.TypeFile))
+            {
+                PlayerWindow PW = new PlayerWindow(await DVM.CreateFile(DC.Name));
+                PW.Show();
+            }
         }
 
         private void RemoveTheFile(object sender, EventArgs e)
@@ -73,9 +81,7 @@ namespace MyDataSafe
             EditWindow EW = new EditWindow(selected, DVM);
             EW.Closed += (s, e) => refresh();
             EW.Show();
-
         }
-
         private async Task ShowLoading()
         {
             ld = new Loading();
@@ -96,7 +102,7 @@ namespace MyDataSafe
                 string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
                 string path = Path.GetDirectoryName(fw) + "\\TempFiles";
                 await Task.Delay(10);
-              Process.Start("explorer.exe", @path); 
+                Process.Start("explorer.exe", @path);
                 CloseLoading();
             });
         }
