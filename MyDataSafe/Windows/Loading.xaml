@@ -1,0 +1,16 @@
+﻿<Window x:Class="MyDataSafe.Windows.Loading"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyDataSafe.Windows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Style="{StaticResource Bck}"
+        Title="Loading" Height="150" Width="200">
+    <Grid>
+        <Image x:Name="imagen" Margin="44,20,44,19" RenderTransformOrigin="0.5,0.5"/>
+    </Grid>
+</Window>

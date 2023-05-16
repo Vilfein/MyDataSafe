@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Icons\delete.png" />
     <None Remove="Icons\folder.png" />
+    <None Remove="Icons\loading-process.png" />
     <None Remove="Icons\pencil.png" />
     <None Remove="Icons\safe-box.png" />
     <None Remove="Icons\safe.png" />
@@ -23,6 +24,7 @@
   <ItemGroup>
     <Resource Include="Icons\delete.png" />
     <Resource Include="Icons\folder.png" />
+    <Resource Include="Icons\loading-process.png" />
     <Resource Include="Icons\pencil.png" />
     <Resource Include="Icons\safe-box.png" />
     <Resource Include="Icons\safe.png" />

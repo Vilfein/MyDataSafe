@@ -19,12 +19,13 @@ namespace MyDataSafe
     public partial class MainWindow : Window
     {
         public static bool PasswordSignIn = false;
+        Loading ld;
         private DataViewModel DVM { get; set; }
         public MainWindow()
         {
             DVM = new DataViewModel(new Service.DBService());
             InitializeComponent();
-           
+
             this.Closing += (s, e) =>
             {
                 DVM.CleanUp();
@@ -34,8 +35,8 @@ namespace MyDataSafe
         private void SaveTheFile(object sender, RoutedEventArgs e)
         {
             string pattern = "Video Files (*.wmv; *.avi; *.mp4; *.mpeg; *.flv)|*.wmv; *.avi; *.mp4; *.mpeg; *.flv" +
-                "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;"+
-                "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx"+
+                "| Pictures (*.jpg; *.jpeg; *.bmp; *.gif) | *.jpg; *.jpeg; *.bmp; *.gif;" +
+                "| Documents (*.txt;*.pdf;*.docx)|*.txt;*.pdf;*.docx" +
                 "| Archives (*.zip;*.rar)|*.zip;*.rar";
 
             OpenFileDialog OF = new OpenFileDialog();
@@ -54,15 +55,15 @@ namespace MyDataSafe
 
         private async void OpenTheFile(object sender, MouseButtonEventArgs e)
         {
-            DataClass? DC = (sender as ListView)?.SelectedItem as DataClass;   
+            DataClass? DC = (sender as ListView)?.SelectedItem as DataClass;
             PlayerWindow PW = new PlayerWindow(await DVM.CreateFile(DC.Name));
             PW.Show();
         }
 
-        private void RemoveTheFile(object sender, EventArgs e) 
+        private void RemoveTheFile(object sender, EventArgs e)
         {
             DataClass? selected = ListOfDatas.SelectedItem as DataClass;
-            DVM.RemoveFile(selected!,refresh);
+            DVM.RemoveFile(selected!, refresh);
         }
         private void EditTheFile(object sender, EventArgs e)
         {
@@ -73,18 +74,36 @@ namespace MyDataSafe
 
         }
 
+        private async Task ShowLoading()
+        {
+            ld = new Loading();
+            ld.Show();
+        }
+
+
+        private async void CloseLoading() => ld.Close();
+
         private async void Explorer(object sender, EventArgs e)
         {
+            ShowLoading();
             DataClass selected = ListOfDatas.SelectedItem as DataClass;
-            await DVM.CreateFile(selected.Name);
-            string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
-            string path = Path.GetDirectoryName(fw) + "\\TempFiles";
-            Process.Start("explorer.exe", @path);
+            DVM.CreateFile(selected.Name).GetAwaiter().OnCompleted(async () =>
+            {
+                string fw = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
+                string path = Path.GetDirectoryName(fw) + "\\TempFiles";
+                await Task.Delay(100);
+                CloseLoading();
+                Process.Start("explorer.exe", @path);
+            });
+
+
+
+
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-           var data = await DVM.LoadAllDataAsync();
+            var data = await DVM.LoadAllDataAsync();
             ListOfDatas.ItemsSource = data;
         }
 
