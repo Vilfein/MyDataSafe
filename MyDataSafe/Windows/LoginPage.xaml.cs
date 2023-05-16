@@ -1,4 +1,5 @@
-﻿using MyDataSafe.ViewModel;
+﻿using MyDataSafe.Model;
+using MyDataSafe.ViewModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,8 +30,9 @@ namespace MyDataSafe.Windows
                 if ((name == LVM.LoginName) && (pass == LVM.LoginPassword))
                 {
                     MainWindow MW = new MainWindow();
-                    MW.Show();           
-                    Close();
+                    MW.Loaded += (s, e) => Close();
+                    MW.Show();
+
                 }
 
                 else

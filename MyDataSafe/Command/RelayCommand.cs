@@ -14,7 +14,7 @@ namespace MyDataSafe.Command
 
         public event EventHandler CanExecuteChanged;
 
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        public RelayCommand(Action<object> execute, Predicate<object>? canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;

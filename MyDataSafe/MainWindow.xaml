@@ -8,7 +8,7 @@
        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Style="{StaticResource Bck}"
-        Title="MainWindow" Height="460" Width="500" Icon="/Icons/safe-box.png">
+        Title="MyDataSafe" Height="460" Width="500" Icon="/Icons/safe-box.png">
     <Window.Resources>
         <Image x:Key="Delete" Source="pack://application:,,,/Icons/delete.png"/>
         <Image x:Key="Edit" Source="pack://application:,,,/Icons/pencil.png"/>
@@ -17,7 +17,7 @@
         <Image x:Key="Saf" Source="pack://application:,,,/Icons/safe.png"/>
     </Window.Resources>
 
-    <Grid Loaded="Grid_Loaded" Height="434" VerticalAlignment="Top">
+    <Grid Loaded="Grid_Loaded" Height="443" VerticalAlignment="Top">
 
 
         <Button Style="{StaticResource BTNS}" Content="Save new File" Margin="155,367,0,0" Click="SaveTheFile" HorizontalAlignment="Left" Width="190" Height="43" VerticalAlignment="Top" />
@@ -25,7 +25,8 @@
         <ListView x:Name="ListOfDatas"
                   Margin="0,27,0,83"
                   Width="300" 
-                  MouseDoubleClick="OpenTheFile" HorizontalAlignment="Center">
+                 
+                  HorizontalAlignment="Center">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -45,6 +46,23 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Label x:Name="WebSite"
+               
+            HorizontalAlignment="Left"
+                   Margin="7,361,0,56" 
+                   Foreground="White" 
+                   Content="www.vasekdoskar.cz" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="33.15"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+
+        </Label>
 
 
 

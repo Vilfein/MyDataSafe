@@ -19,7 +19,7 @@ namespace MyDataSafe.ViewModel
 
         public List<DataColor> LoadColors() => service.GetColors();
 
-        public bool SaveData(string path)
+        public async Task<bool> SaveDataAsync(string path)
         {
             try
             {
@@ -79,10 +79,10 @@ namespace MyDataSafe.ViewModel
             await service.UpdateModelAsync(dataClass);
         }
 
-        public async Task UpdateFileAsync(DataClass dataClass, PMethod M)
+        public async Task UpdateFileAsync(DataClass dataClass, PMethod? M)
         {
             await service.UpdateModelAsync(dataClass);
-            M();
+            M?.Invoke();
         }
 
 
@@ -92,6 +92,12 @@ namespace MyDataSafe.ViewModel
         {
             if (service.DeleteModel(dataClass))
                 M();
+        }
+
+        public async Task RemoveFileAsync(DataClass dataClass, PMethod? M)
+        {
+            if (service.DeleteModel(dataClass))
+                M?.Invoke();
         }
     }
 }

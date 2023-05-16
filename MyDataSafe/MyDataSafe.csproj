@@ -8,6 +8,7 @@
     <SignAssembly>True</SignAssembly>
     <DelaySign>False</DelaySign>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <ApplicationIcon>SafeIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,10 @@
     <None Remove="Icons\safe-box.png" />
     <None Remove="Icons\safe.png" />
     <None Remove="Icons\wmp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SafeIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
