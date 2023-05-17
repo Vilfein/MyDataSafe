@@ -8,14 +8,34 @@
         Style="{StaticResource Bck}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Data Safe" Height="210" Width="220" Icon="/Icons/safe-box.png">
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-        <Label Content="Log In" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" />
-        <Label Content="Name:" Foreground="White"></Label>
+        Title="Data Safe"
+        Height="210" 
+        Width="220" 
+        Icon="/Icons/safe-box.png">
+    
+    <StackPanel Orientation="Vertical" 
+                HorizontalAlignment="Center">
+        
+        <Label Content="Log In" 
+               HorizontalAlignment="Center" 
+               Foreground="White" 
+               FontWeight="Bold" />
+        
+        <Label Content="Name:" 
+               Foreground="White"/>
+        
         <TextBox x:Name="LoginName"/>
-        <Label Content="Password:" Foreground="White"></Label>
+        
+        <Label Content="Password:" 
+               Foreground="White"></Label>
+        
         <PasswordBox x:Name="LoginPass" Width="130" />
-        <Button x:Name="LoginBtn" Style="{StaticResource BTNS}" Margin="0,15"  Content="Open" Click="Button_Click" IsDefault="True"/>
-
+        
+        <Button x:Name="LoginBtn"
+                Style="{StaticResource BTNS}"
+                Margin="0,15"
+                Content="Open" 
+                Click="Button_Click" 
+                IsDefault="True"/>
     </StackPanel>
 </Window>

@@ -31,14 +31,14 @@ namespace MyDataSafe.Windows
             SaveBtn.IsEnabled= true;
         }
 
-        private void EditData(object sender, EventArgs e)
+        private async void EditData(object sender, EventArgs e)
         {
             if(NameTB.Text.Length==0) return;
             else
             {
                 data.Name = NameTB.Text;
                 data.Color = (DataColor)CB.SelectedItem;
-                DVM.UpdateFile(data);
+                DVM.UpdateFileAsync(data);
                 Close();
             }           
         }

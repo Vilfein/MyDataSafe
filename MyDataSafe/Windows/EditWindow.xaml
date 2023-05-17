@@ -16,7 +16,12 @@
     </Window.DataContext>
 
     <Grid>
-        <Label Content="Name:" Foreground="White" HorizontalAlignment="Left" Margin="34,46,0,0" VerticalAlignment="Top" Width="51"/>
+        <Label Content="Name:"
+               Foreground="White"
+               HorizontalAlignment="Left"
+               Margin="34,46,0,0"
+               VerticalAlignment="Top"
+               Width="51"/>
 
         <TextBox HorizontalAlignment="Center"
                  VerticalContentAlignment="Center"
@@ -25,30 +30,43 @@
                  Text="{Binding Name}"
                  VerticalAlignment="Top"
                  Width="120" Height="26"
-
                  x:Name="NameTB"
                  />
 
-        <Label Content="Color:" Foreground="White" HorizontalAlignment="Left" Margin="34,97,0,0" VerticalAlignment="Top" Width="51"/>
+        <Label Content="Color:"
+               Foreground="White"
+               HorizontalAlignment="Left"
+               Margin="34,97,0,0"
+               VerticalAlignment="Top"
+               Width="51"/>
 
         <ComboBox x:Name="CB"
-            Height="20" 
-                  SelectedItem="{Binding Color}"
+                  Height="20" 
+                  
+                  SelectedItem="{Binding Color, Mode=OneWay}"
                   Margin="0,100,0,0"
                   VerticalAlignment="Top"
                   HorizontalAlignment="Center" 
                   Width="120"
                  />
 
-
         <TextBox HorizontalAlignment="Left"
-            VerticalContentAlignment="Center"
-            Margin="215,46,0,0"
-            TextWrapping="Wrap"
-            Text="{Binding TypeFile}"
+                 VerticalContentAlignment="Center"
+                 Margin="215,46,0,0" 
+                 TextWrapping="Wrap"
+                 Text="{Binding TypeFile}"
                  IsReadOnly="True"
-            VerticalAlignment="Top"
-            Width="50" Height="26"/>
-        <Button x:Name="SaveBtn" Style="{StaticResource BTNS}"  Content="Uložit změny" IsEnabled="False" HorizontalAlignment="Center" Margin="0,139,0,0" Width="120" Height="20" VerticalAlignment="Top"/>
+                 VerticalAlignment="Top"
+                 Width="50" Height="26"/>
+        
+        <Button x:Name="SaveBtn"
+                Style="{StaticResource BTNS}"
+                Content="Uložit změny"
+                IsEnabled="False"
+                HorizontalAlignment="Center"
+                Margin="0,139,0,0"
+                Width="120"
+                Height="20"
+                VerticalAlignment="Top"/>
     </Grid>
 </Window>
