@@ -9,8 +9,18 @@ namespace MyDataSafe.ViewModel
 {
     public class DataViewModel
     {
+        /// <summary>
+        /// Name of folder
+        /// </summary>
         private string foldername = "TempFiles";
+        /// <summary>
+        /// Database service class
+        /// </summary>
         private DBService service { get; set; }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="service">Reference to DB service</param>
         public DataViewModel(DBService service) => this.service = service;
 
         public List<DataClass> LoadAllData() => service.GetAllModels();
