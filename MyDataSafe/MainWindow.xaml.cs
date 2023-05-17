@@ -78,10 +78,10 @@ namespace MyDataSafe
         /// <summary>
         /// Refresh ListView collection
         /// </summary>
-        private void refresh()
+        private async void refresh()
         {
             ListOfDatas.ItemsSource = null;
-            ListOfDatas.ItemsSource = DVM.LoadAllData();
+            ListOfDatas.ItemsSource =  DVM.LoadAllData();
         }
 
         /// <summary>

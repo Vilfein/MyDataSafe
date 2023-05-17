@@ -56,6 +56,7 @@ namespace MyDataSafe.ViewModel
                 Directory.CreateDirectory(foldername);
 
             var fileEntity = LoadAllData().FirstOrDefault(f => f.Name == name);
+
             var pathtofile = Path.Combine(foldername, $"{fileEntity!.Name}.{fileEntity.TypeFile}");
             if (!File.Exists(pathtofile))
             {
@@ -69,14 +70,13 @@ namespace MyDataSafe.ViewModel
             return new FileInfo(pathtofile).FullName; ;
         }
 
-
         public void UpdateFile(DataClass dataClass)
         {
             service.UpdateModel(dataClass);
         }
         public async Task UpdateFileAsync(DataClass dataClass)
         {
-            await service.UpdateModelAsync(dataClass);
+             await service.UpdateModelAsync(dataClass);
         }
 
         public async Task UpdateFileAsync(DataClass dataClass, PMethod? M)
