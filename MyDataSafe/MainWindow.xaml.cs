@@ -78,7 +78,7 @@ namespace MyDataSafe
         /// <summary>
         /// Refresh ListView collection
         /// </summary>
-        private async void refresh()
+        private void refresh()
         {
             ListOfDatas.ItemsSource = null;
             ListOfDatas.ItemsSource =  DVM.LoadAllData();
