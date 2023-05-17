@@ -50,7 +50,7 @@ namespace MyDataSafe.ViewModel
                 Directory.Delete(foldername, true);
         }
 
-        public async Task<string> CreateFile(string name)
+        public async Task<string> CreateFileAsync(string name)
         {
             if (!Directory.Exists(foldername))
                 Directory.CreateDirectory(foldername);
@@ -88,10 +88,10 @@ namespace MyDataSafe.ViewModel
 
         public delegate void PMethod();
 
-        public void RemoveFile(DataClass dataClass, PMethod M)
+        public void RemoveFile(DataClass dataClass, PMethod? M)
         {
             if (service.DeleteModel(dataClass))
-                M();
+                M?.Invoke();
         }
 
         public async Task RemoveFileAsync(DataClass dataClass, PMethod? M)

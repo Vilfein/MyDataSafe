@@ -94,7 +94,7 @@ namespace MyDataSafe
 
             if (types.Any(x => x == DC?.TypeFile))
             {
-                PlayerWindow PW = new PlayerWindow(await DVM.CreateFile(DC!.Name));
+                PlayerWindow PW = new PlayerWindow(await DVM.CreateFileAsync(DC!.Name));
                 PW.Show();
             }
         }
@@ -136,7 +136,7 @@ namespace MyDataSafe
         private async void Explorer(object sender, EventArgs e)
         {
             DataClass? selected = ListOfDatas.SelectedItem as DataClass;
-            DVM.CreateFile(selected!.Name).GetAwaiter().OnCompleted(() =>
+            DVM.CreateFileAsync(selected!.Name).GetAwaiter().OnCompleted(() =>
             {
                 string fi = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
                 string path = Path.GetDirectoryName(fi) + "\\TempFiles";
@@ -163,7 +163,7 @@ namespace MyDataSafe
         private async void OpenInSystemPlayer(object sender, RoutedEventArgs e)
         {
             DataClass? selected = ListOfDatas.SelectedItem as DataClass;
-            DVM.CreateFile(selected!.Name).GetAwaiter().OnCompleted(() =>
+            DVM.CreateFileAsync(selected!.Name).GetAwaiter().OnCompleted(() =>
             {
                 string fi = new FileInfo(selected.Name).FullName + "." + selected.TypeFile;
                 fi = @fi.Insert(fi.LastIndexOf('\\') + 1, "TempFiles\\");
