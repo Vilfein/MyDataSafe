@@ -41,7 +41,7 @@ namespace MyDataSafe.Windows
                 data.Name = NameTB.Text;
                 data.Color = CB.SelectedItem as DataColor;
                 Close();
-                await DVM.UpdateFileAsync(data);
+                Task.Run(async()=> await DVM.UpdateFileAsync(data));
              
             }
         }

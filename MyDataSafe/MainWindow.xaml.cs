@@ -1,10 +1,8 @@
 ﻿using Microsoft.Win32;
-using MyDataSafe.Command;
 using MyDataSafe.Model;
 using MyDataSafe.ViewModel;
 using MyDataSafe.Windows;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -108,8 +106,14 @@ namespace MyDataSafe
         private async void RemoveTheFile(object sender, EventArgs e)
         {
             DataClass? selected = ListOfDatas.SelectedItem as DataClass;
+            Loading ld = new Loading();
+            ld.Show();
             Task task = Task.Run(async() => await DVM.RemoveFileAsync(selected!, null));
-            task.GetAwaiter().OnCompleted(refresh);
+            task.GetAwaiter().OnCompleted(() =>
+            {
+                refresh();
+                ld.Close();
+            });
         }
         /// <summary>
         /// Summon the dialog for editation file parameters

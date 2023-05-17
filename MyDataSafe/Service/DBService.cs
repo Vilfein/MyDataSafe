@@ -76,8 +76,8 @@ namespace MyDataSafe.Service
         /// <param name="input">DataClass reference</param>
         public async Task UpdateModelAsync(DataClass input)
         {
-             context.Datas.Update(input);
-             await context.SaveChangesAsync();
+             context.Update(input);
+             context.SaveChangesAsync();
         }
 
         /// <summary>
