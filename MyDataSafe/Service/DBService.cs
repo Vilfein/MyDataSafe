@@ -89,7 +89,7 @@ namespace MyDataSafe.Service
         {
             try
             {
-                context.Datas.Remove(input);
+                context.Remove(input);
                 context.SaveChanges();
                 return true;
             }
@@ -99,6 +99,6 @@ namespace MyDataSafe.Service
         /// Returns DataColors
         /// </summary>
         /// <returns>Colors</returns>
-        public List<DataColor> GetColors() => context.Colors.ToList();
+        public List<DataColor> GetColors() => context.Colors.OrderBy(x => x.Name).ToList();
     }
 }
