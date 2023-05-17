@@ -124,7 +124,10 @@ namespace MyDataSafe
         {
             DataClass? selected = ListOfDatas.SelectedItem as DataClass;
             EditWindow EW = new EditWindow(selected!, DVM);
-            EW.Closed += (s, e) => refresh();
+            EW.Closed += (s, e) =>
+            {
+                refresh();
+            };
             EW.Show();
         }
 

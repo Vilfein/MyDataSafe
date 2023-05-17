@@ -12,7 +12,7 @@ namespace MyDataSafe.Windows
     /// </summary>
     public partial class EditWindow : Window
     {
-        private DataClass data { get; set; }
+        public DataClass data { get; set; }
         private readonly DataViewModel DVM;
         public EditWindow(DataClass data, DataViewModel DVM)
         {
@@ -35,17 +35,13 @@ namespace MyDataSafe.Windows
 
         private async void EditData(object sender, EventArgs e)
         {
-            if (NameTB.Text.Length == 0) return;
-            else
+            if (NameTB.Text.Length > 0) 
             {
                 data.Name = NameTB.Text;
                 data.Color = CB.SelectedItem as DataColor;
                 Close();
-                Task.Run(async()=> await DVM.UpdateFileAsync(data));
-             
+                Task.Run(()=> DVM.UpdateFile(data));
             }
         }
-
-
     }
 }
