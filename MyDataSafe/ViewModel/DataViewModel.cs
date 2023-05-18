@@ -40,7 +40,6 @@ namespace MyDataSafe.ViewModel
 
                 string TheName = nameOfFile.Substring(0, nameOfFile.LastIndexOf("."));
 
-
                 var fileEntity = new DataClass
                 {
                     Name = TheName,
