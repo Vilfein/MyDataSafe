@@ -25,6 +25,7 @@ namespace MyDataSafe.ViewModel
 
         public List<DataClass> LoadAllData() => service.GetAllModels();
 
+
         public async Task<List<DataClass>> LoadAllDataAsync() => service.GetAllModels();
 
         public List<DataColor> LoadColors() => service.GetColors();
